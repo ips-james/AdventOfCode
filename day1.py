@@ -1,14 +1,4 @@
-expense_list = [int(line) for line in open('day1_input.txt', 'r')]
+expense_list = {int(line) for line in open('day1_input.txt', 'r')}
 
-for e in expense_list:
-    for f in expense_list:
-        if e + f > 2020:
-            continue
-        if e + f == 2020:
-            print(e, f, e * f)
-
-        for g in expense_list:
-            if e + f + g > 2020:
-                continue
-            if e + f + g == 2020:
-                print(e, f, g, e * f * g)
+print(next(x * y for x in expense_list for y in expense_list if x + y == 2020))
+print(next(x * y * z for x in expense_list for y in expense_list for z in expense_list if x + y + z == 2020))
