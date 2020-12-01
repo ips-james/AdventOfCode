@@ -1,6 +1,3 @@
-checked = []
-found_answer = False
-
 expense_list = [int(line) for line in open('day1_input.txt', 'r')]
 
 for e in expense_list:
