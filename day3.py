@@ -1,25 +1,26 @@
 import math
 
-input_map = [line for line in open('day3_input.txt', 'r')]
+input_map = open('day3_input.txt', 'r').read().splitlines()
+# print(input_map)
 
 
-def sledge(step_x, step_y):
-    limit_x = len(input_map[0]) - 1
+def sledge(dx, dy):
+    limit_x = len(input_map[0])
     limit_y = len(input_map)
 
-    x = y = 0
+    (x, y) = (0, 0)
     trees = 0
 
     # print(limit_x, limit_y)
-    for n in range(round(limit_y / step_y)):
-        # print(x, y)
+    while y < limit_y:
+
         if input_map[y][x] == "#":
             trees += 1
-        # print(input_map[y][x], x, y, trees)
-        x += step_x
-        y += step_y
-        if x >= limit_x:
-            x = x - limit_x
+        # print(x, y, trees)
+        x = (x + dx) % limit_x
+        y += dy
+        # if x >= limit_x:
+        #     x = x - limit_x
     return (trees)
 
 
